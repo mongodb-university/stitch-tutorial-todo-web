@@ -1,0 +1,42 @@
+{
+  "name": "mongodb-stitch-todo-web",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "@emotion/core": "10.0.9",
+    "@emotion/styled": "10.0.9",
+    "@fortawesome/fontawesome-svg-core": "1.2.17",
+    "@fortawesome/free-solid-svg-icons": "5.8.1",
+    "@fortawesome/react-fontawesome": "0.1.4",
+    "@reach/router": "1.2.1",
+    "@rooks/use-timeout": "1.2.0",
+    "bootstrap": "4.3.1",
+    "dotenv": "7.0.0",
+    "leaflet": "1.4.0",
+    "leaflet.awesome-markers": "2.0.5",
+    "mongodb-stitch-browser-sdk": "4.3.2",
+    "react": "16.8.3",
+    "react-dom": "16.8.3",
+    "react-error-boundary": "1.2.3",
+    "react-leaflet": "2.2.1",
+    "react-scripts": "2.1.8",
+    "reactstrap": "7.1.0"
+  },
+  "devDependencies": {
+    "typescript": "3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
