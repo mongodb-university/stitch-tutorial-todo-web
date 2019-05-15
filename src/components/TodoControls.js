@@ -26,6 +26,7 @@ export default function TodoControls(props) {
     }
   };
   const allTodosAreCompleted = items.every(item => item.checked === true);
+  const someTodosAreCompleted = items.every(item => item.checked === true);
   return (
     <Layout>
       <TodoInput
@@ -35,9 +36,9 @@ export default function TodoControls(props) {
         onKeyDown={handleKeyPress}
       />
       <ControlBar>
-        {items.length > 0 && (
+        {items.length > 0 && !allTodosAreCompleted && (
           <SelectAllButton
-            selected={allTodosAreCompleted}
+            selected={someTodosAreCompleted}
             onClick={actions.completeAllTodos}
           />
         )}
@@ -58,7 +59,7 @@ const Layout = styled.div`
 `;
 const ControlBar = styled.div`
   width: 100%;
-  padding: 10px 0;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -80,7 +81,7 @@ const SelectAllButton = props => {
         </span>
       ) : (
         <span>
-          <UncheckedIcon /> Check All
+          <UncheckedIcon /> Complete All
         </span>
       )}
     </Selector>
