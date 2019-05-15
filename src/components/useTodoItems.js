@@ -78,8 +78,8 @@ export function useTodoItems(userId) {
     const todos = await items.find({}, { limit: 1000 }).asArray();
     dispatch({ type: "setTodos", payload: { todos } });
   };
-  const addTodo = async text => {
-    const todo = { text, owner_id: userId };
+  const addTodo = async task => {
+    const todo = { task, owner_id: userId };
     const result = await items.insertOne(todo);
     dispatch({ type: "addTodo", payload: { ...todo, _id: result.insertedId } });
   };

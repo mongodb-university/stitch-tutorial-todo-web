@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 import { CheckedIcon, UncheckedIcon } from "./Icon";
 import { Card } from "reactstrap";
@@ -17,10 +17,10 @@ export default function TodoItem(props) {
     <Todo onClick={toggleStatus}>
       <Layout>
         <Checkbox />
-        <Text>{item.text}</Text>
+        <Text>{item.task}</Text>
       </Layout>
     </Todo>
-   );
+  );
 }
 const Todo = styled(Card)`
   margin: 4px auto;
@@ -29,10 +29,10 @@ const Layout = styled.div`
   display: flex;
   align-items: center;
   padding: 10px;
-`
+`;
 const Text = styled.span`
-	font-size: 18px;
+  font-size: 18px;
   line-height: 24px;
   margin-left: 10px;
   color: #115500;
-`
+`;
