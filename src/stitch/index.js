@@ -1,15 +1,11 @@
-import {app, items} from "./stitch";
+import { app } from "./app";
+import { items } from "./mongodb";
 import {
   loginAnonymous,
-  logoutUser,
-  hasLoggedInUser,
-  getCurrentUser
-} from "./authentication";
-
-export {app, items};
-export {
-  loginAnonymous,
-  logoutUser,
+  logoutCurrentUser,
   hasLoggedInUser,
   getCurrentUser,
-};
+} from "./authentication";
+
+export { app, items };
+export { loginAnonymous, logoutCurrentUser, hasLoggedInUser, getCurrentUser };

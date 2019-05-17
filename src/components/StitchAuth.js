@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useWhyDidYouUpdate } from "./../utils/useWhyDidYouUpdate";
 import {
   hasLoggedInUser,
   loginAnonymous,
-  logoutUser,
+  logoutCurrentUser,
   getCurrentUser,
 } from "./../stitch/authentication";
 
@@ -28,7 +27,6 @@ export function StitchAuthProvider(props) {
     isLoggedIn: hasLoggedInUser(),
     currentUser: getCurrentUser(),
   });
-  useWhyDidYouUpdate('StitchAuthProvider', { ...authState })
 
   // Authentication Actions
   const handleAnonymousLogin = async () => {
@@ -38,34 +36,37 @@ export function StitchAuthProvider(props) {
       setAuthState({
         ...authState,
         isLoggedIn: true,
-        currentUser: loggedInUser
+        currentUser: loggedInUser,
       });
     }
   };
   const handleLogout = async () => {
-    const { isLoggedIn, currentUser } = authState;
+    const { isLoggedIn } = authState;
     if (isLoggedIn) {
-      await logoutUser(currentUser);
+      await logoutCurrentUser();
       setAuthState({
         ...authState,
         isLoggedIn: false,
-        currentUser: null
+        currentUser: null,
       });
     } else {
-      console.log(`can't handleLogout when no user is logged in`)
+      console.log(`can't handleLogout when no user is logged in`);
     }
   };
 
   // We useMemo to improve performance by eliminating some re-renders
-  const authInfo = React.useMemo(() => {
-    const { isLoggedIn, currentUser } = authState;
-    const value = {
-      isLoggedIn,
-      currentUser,
-      actions: { handleAnonymousLogin, handleLogout }
-    };
-    return value;
-  }, [authState.isLoggedIn]);
+  const authInfo = React.useMemo(
+    () => {
+      const { isLoggedIn, currentUser } = authState;
+      const value = {
+        isLoggedIn,
+        currentUser,
+        actions: { handleAnonymousLogin, handleLogout },
+      };
+      return value;
+    },
+    [authState.isLoggedIn],
+  );
   return (
     <StitchAuthContext.Provider value={authInfo}>
       {props.children}
@@ -73,5 +74,5 @@ export function StitchAuthProvider(props) {
   );
 }
 StitchAuthProvider.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element,
 };
