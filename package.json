@@ -16,7 +16,7 @@
     "dotenv": "7.0.0",
     "leaflet": "1.4.0",
     "leaflet.awesome-markers": "2.0.5",
-    "mongodb-stitch-browser-sdk": "4.3.2",
+    "mongodb-stitch-browser-sdk": "4.4.1",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-error-boundary": "1.2.3",
