@@ -60,25 +60,26 @@ export function StitchAuthProvider(props) {
     };
   }, []);
 
-  const handleLogin = React.useCallback(
-    async provider => {
-      if (!authState.isLoggedIn) {
-        switch(provider) {
-          case "anonymous": return loginAnonymous()
-          case "google": return loginGoogle()
-          default: {}
-        }
+  const handleLogin = async (provider) => {
+    if (!authState.isLoggedIn) {
+      switch(provider) {
+        case "anonymous": return loginAnonymous()
+        case "google": return loginGoogle()
+        default: {}
       }
-    },
-    [authState],
-  );
-  const handleLogout = React.useCallback(async () => {
-    if (authState.isLoggedIn) {
-      logoutCurrentUser();
-    } else {
-      console.log(`can't handleLogout when no user is logged in`);
     }
-  }, [authState]);
+  }
+  
+  const handleLogout = async () => {
+    if (authState.isLoggedIn) {
+      await logoutCurrentUser();
+      setAuthState({
+        ...authState,
+        isLoggedIn: false,
+        currentUser: null,
+      });
+    }
+  }
 
   // We useMemo to improve performance by eliminating some re-renders
   const authInfo = React.useMemo(() => {
@@ -92,7 +93,7 @@ export function StitchAuthProvider(props) {
       },
     };
     return value;
-  }, [authState, handleLogin, handleLogout]);
+  }, [authState]); 
 
   return (
     <StitchAuthContext.Provider value={authInfo}>
