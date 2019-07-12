@@ -93,7 +93,7 @@ export function StitchAuthProvider(props) {
       };
       return value;
     },
-    [authState.isLoggedIn],
+    [authState, handleLogin, handleLogout],
   );
   return (
     <StitchAuthContext.Provider value={authInfo}>
