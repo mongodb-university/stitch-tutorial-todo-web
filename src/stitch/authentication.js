@@ -1,6 +1,13 @@
 import { AnonymousCredential } from "mongodb-stitch-browser-sdk";
 import { app } from "./app.js";
 
+export function addAuthenticationListener(listener) {
+  app.auth.addAuthListener(listener);
+}
+export function removeAuthenticationListener(listener) {
+  app.auth.removeAuthListener(listener);
+}
+
 export function loginAnonymous() {
   // Allow users to log in anonymously
   const credential = new AnonymousCredential();
