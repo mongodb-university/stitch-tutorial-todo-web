@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import ErrorBoundary from "react-error-boundary";
-import { useStitchAuth } from "./StitchAuth";
+import { useStitchAuth} from "./StitchAuth";
 import { Card, CardBody, Button } from "reactstrap";
 
 Login.propTypes = {};
@@ -15,6 +15,9 @@ export default function Login() {
             <ButtonRow>
               <LoginButton onClick={() => actions.handleLogin("anonymous")}>
                 Log In as a Guest User
+              </LoginButton> 
+              <LoginButton onClick={() => actions.handleLogin("google")}> 
+                Log In with Google
               </LoginButton>
               <LoginButton onClick={() => actions.handleLogin("facebook")}>
                 Log In with Facebook

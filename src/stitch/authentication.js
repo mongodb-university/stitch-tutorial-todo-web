@@ -1,6 +1,7 @@
 import { 
   AnonymousCredential,
   FacebookRedirectCredential, 
+  GoogleRedirectCredential,
  } from "mongodb-stitch-browser-sdk";
 import { app } from "./app.js";
 
@@ -20,6 +21,16 @@ export function loginAnonymous() {
   const credential = new AnonymousCredential();
   return app.auth.loginWithCredential(credential);
 }
+
+export async function loginGoogle() { 
+  return await app.auth.loginWithRedirect(new GoogleRedirectCredential());
+}
+
+export function handleOAuthRedirects() {
+  if (app.auth.hasRedirectResult()) {
+    return app.auth.handleRedirectResult();
+  }
+};
 
 export function hasLoggedInUser() {
   // Check if there is currently a logged in user
