@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import {
   hasLoggedInUser,
   loginAnonymous,
+  loginFacebook, 
   logoutCurrentUser,
   getCurrentUser,
   addAuthenticationListener,
   removeAuthenticationListener,
+  handleOAuthRedirects, 
 } from "./../stitch/authentication";
 
 // Create a React Context that lets us expose and access auth state
@@ -50,6 +52,7 @@ export function StitchAuthProvider(props) {
         }
     };
     addAuthenticationListener(authListener);
+    handleOAuthRedirects(); 
     setAuthState(state => ({ ...state}));
     return () => {
         removeAuthenticationListener(authListener);
@@ -62,6 +65,7 @@ export function StitchAuthProvider(props) {
         if (!authState.isLoggedIn) {
         switch(provider) {
             case "anonymous": return loginAnonymous()
+            case "facebook": return loginFacebook()
             default: {}
         }
         }
@@ -93,7 +97,7 @@ export function StitchAuthProvider(props) {
       };
       return value;
     },
-    [authState, handleLogin, handleLogout],
+    [authState],
   );
   return (
     <StitchAuthContext.Provider value={authInfo}>

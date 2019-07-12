@@ -1,4 +1,7 @@
-import { AnonymousCredential } from "mongodb-stitch-browser-sdk";
+import { 
+  AnonymousCredential,
+  FacebookRedirectCredential, 
+ } from "mongodb-stitch-browser-sdk";
 import { app } from "./app.js";
 
 export function addAuthenticationListener(listener) {
@@ -6,6 +9,10 @@ export function addAuthenticationListener(listener) {
 }
 export function removeAuthenticationListener(listener) {
   app.auth.removeAuthListener(listener);
+}
+
+export async function loginFacebook() {
+  return await app.auth.loginWithRedirect(new FacebookRedirectCredential());
 }
 
 export function loginAnonymous() {
@@ -29,3 +36,9 @@ export function logoutCurrentUser() {
   const user = getCurrentUser();
   return app.auth.logoutUserWithId(user.id);
 }
+
+export function handleOAuthRedirects() {
+  if (app.auth.hasRedirectResult()) {
+      return app.auth.handleRedirectResult();
+  }
+};
