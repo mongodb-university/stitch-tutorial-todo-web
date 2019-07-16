@@ -13,8 +13,11 @@ export default function Login() {
         <LoginCard>
           <CardBody>
             <ButtonRow>
-              <LoginButton onClick={actions.handleAnonymousLogin}>
+              <LoginButton onClick={() => actions.handleLogin("anonymous")}>
                 Log In as a Guest User
+              </LoginButton>
+              <LoginButton onClick={() => actions.handleLogin("facebook")}>
+                Log In with Facebook
               </LoginButton>
             </ButtonRow>
           </CardBody>
