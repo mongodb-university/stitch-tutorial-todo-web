@@ -87,15 +87,3 @@ const SelectAllButton = props => {
     </Selector>
   );
 };
-const CleanupButton2 = styled.button`
-  background-color: #f83d0e;
-  position: relative;
-  border: 1px solid black;
-  display: inline-block;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  cursor: pointer;
-  :active {
-    top: 2px;
-    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.19), 0 4px 4px rgba(0, 0, 0, 0.23);
-  }
-`;
