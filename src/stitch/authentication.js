@@ -48,8 +48,3 @@ export function logoutCurrentUser() {
   return app.auth.logoutUserWithId(user.id);
 }
 
-export function handleOAuthRedirects() {
-  if (app.auth.hasRedirectResult()) {
-      return app.auth.handleRedirectResult();
-  }
-};
