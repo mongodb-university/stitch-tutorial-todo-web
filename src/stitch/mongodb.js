@@ -11,3 +11,10 @@ const mongoClient = app.getServiceClient(
 const items = mongoClient.db("todo").collection("items");
 
 export { items };
+
+export function watchItems() {
+  const streamPromise = items.watch();
+  const getStream = () => streamPromise;
+  const closeStream = () => streamPromise.then(stream => stream.close);
+  return [getStream, closeStream];
+}
