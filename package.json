@@ -21,7 +21,7 @@
     "react-dom": "16.8.3",
     "react-error-boundary": "1.2.3",
     "react-leaflet": "2.2.1",
-    "react-scripts": "2.1.8",
+    "react-scripts": "5.0.1",
     "reactstrap": "7.1.0"
   },
   "devDependencies": {
